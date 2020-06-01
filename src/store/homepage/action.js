@@ -10,7 +10,7 @@ export const fetchHomepagesSuccess = homepages => {
 export const fetchHomepage = () => async (dispatch, getstate) =>{
   try{
     const data= await axios.get('http://localhost:4000')
-    console.log('data in thunk actions!', data.data);
+    // console.log('data in thunk actions!', data.data);
     dispatch(fetchHomepagesSuccess(data.data))
   }catch (error){
     console.log(error); 

@@ -8,7 +8,7 @@ export default function HomepagesCard(props) {
         <div style={{ backgroundColor:bgcolor, color:color, minWidth: "400px",width:"40%", marginLeft:"15%"}}>
             <h1>{title}</h1>
             <p>{description}</p>
-            <Link to={`homepagesDetail/${props.id}`}>
+            <Link to={`/homepages/${props.id}`}>
             <button>Visit page </button>
             </Link>
             
