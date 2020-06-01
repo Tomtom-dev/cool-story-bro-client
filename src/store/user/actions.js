@@ -77,6 +77,14 @@ export const login = (email, password) => {
   };
 };
 
+export async function fetchData(dispatch, getState) {
+  const response = await axios.get(
+    `http://localhost:4000`
+  );
+  console.log("what data is dispatched?", response.data)
+
+}
+
 export const getUserWithStoredToken = () => {
   return async (dispatch, getState) => {
     // get token from the state

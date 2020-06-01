@@ -1,0 +1,1 @@
+export const getAllHomepages = state => state.homepageReducer
