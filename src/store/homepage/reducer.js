@@ -5,7 +5,7 @@ export default function homepageReducer(state = initialState, action) {
     switch (action.type) {
       case "FETCH_HOMEPAGES_SUCCESS": // i got a list of homepage to save (on action.payload)
       // console.log('test before the return',state);
-        return [...state, ...action.payload];
+        return [ ...action.payload];
       default: {
         return state;
       }

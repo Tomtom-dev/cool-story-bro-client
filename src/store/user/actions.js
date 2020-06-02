@@ -1,16 +1,20 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
-import { selectToken } from "./selectors";
+import { selectToken, selectUser } from "./selectors";
 import {
   appLoading,
   appDoneLoading,
   showMessageWithTimeout,
   setMessage
 } from "../appState/actions";
+import myAxios from "axios";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const STORY_POST_SUCCESS = "STORY_POST_SUCCESS";
+export const STORY_DELETE_SUCCESS = "STORY_DELETE_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
+export const HOMEPAGE_UPDATED = "HOMEPAGE_UPDATED";
 
 const loginSuccess = userWithToken => {
   return {
@@ -18,6 +22,11 @@ const loginSuccess = userWithToken => {
     payload: userWithToken
   };
 };
+
+export const storyDeleteSuccess = storyId => ({
+  type: STORY_DELETE_SUCCESS,
+  payload: storyId
+});
 
 const tokenStillValid = userWithoutToken => ({
   type: TOKEN_STILL_VALID,
@@ -84,6 +93,32 @@ export async function fetchData(dispatch, getState) {
   console.log("what data is dispatched?", response.data)
 
 }
+
+export const deleteStory = storyId => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+    const { homepage, token } = selectUser(getState());
+    const homepageId = homepage.id;
+    // make an axios request to delete
+    // and console.log the response if success
+    try {
+      const response = await myAxios.delete(
+        `/homepages/${homepageId}/stories/${storyId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      console.log("Story deleted?", response.data);
+      dispatch(storyDeleteSuccess(storyId));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.error(e);
+    }
+  };
+};
 
 export const getUserWithStoredToken = () => {
   return async (dispatch, getState) => {

@@ -4,7 +4,8 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import { fetchHomepage } from "../../store/homepage/action";
 import {getAllHomepages} from "../../store/homepage/selector"
-import { selectHomepages } from "../../store/homepage/selector";
+// import { selectHomepages } from "../../store/homepage/selector";
+// import  {selectHomepageDetails} from "../../store/HomepageDetails/selector"
 
 
 import HomepagesCard from "../../components/listHomepages/HomepagesCard"

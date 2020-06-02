@@ -9,8 +9,6 @@ const initialState = {
   export default function homepageDetailReducer(state=initialState, {type, payload}) {
       switch(type){
         case HOMEPAGE_DETAILS_FETCHED:
-            console.log('alooooooo');
-            
             return{...state, ...payload}
 
         default: 
