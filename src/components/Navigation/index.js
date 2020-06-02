@@ -12,6 +12,7 @@ export default function Navigation() {
   const token = useSelector(selectToken);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
+  const myPageOnLogin = token ? ( <NavbarItem path="/myhomepage" linkText="My Page" />) : (<em>Log in to see your page</em>);
 
   return (
     <Navbar bg="light" expand="lg">
@@ -24,7 +25,7 @@ export default function Navigation() {
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/other" linkText="Other" />
           {loginLogoutControls}
-          const myPageOnLogin = token ? ( <NavbarItem path="/myhomepage" linkText="My Page" />) : (<em>Log in to see your page</em>);
+          {myPageOnLogin}
         </Nav>
       </Navbar.Collapse>
     </Navbar >
