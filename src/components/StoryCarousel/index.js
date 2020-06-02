@@ -28,6 +28,7 @@ export default function StoryCarousel(props) {
               className='p-5'
             >
               <h3>{story.name}</h3>
+              <p>date :{story.createdAt}</p>
               <p>{story.content}</p>
               
             </Carousel.Caption>

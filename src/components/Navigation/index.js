@@ -24,8 +24,9 @@ export default function Navigation() {
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/other" linkText="Other" />
           {loginLogoutControls}
+          const myPageOnLogin = token ? ( <NavbarItem path="/myhomepage" linkText="My Page" />) : (<em>Log in to see your page</em>);
         </Nav>
       </Navbar.Collapse>
-    </Navbar>
+    </Navbar >
   );
 }
